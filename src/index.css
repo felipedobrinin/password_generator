@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+:root {
+  font-family: 'Poppins',system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --background : #FAFAFA;
+  --panel : #FFFFFF;
+  --border : #CFCFCF;
+  --text : #151515;
+  --border-thickness : 2px;
+  --radius : 6px;
+  --padding : 0.625rem;
+
+  --blue : #3584E4;
+  --light-blue : #E1EDFB;
+  color: var(--text);
+}
+
+
+body {
+  background-color: var(--background);
+
+}
+
+.app {
+  margin: auto;
+  width: min(100%, 600px);
+
+}
+
+
+.panel {
+  background-color: var(--panel);
+  border: var(--border-thickness) solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--padding);
+}
+
+
+.button {
+  background-color: var(--light-blue);
+  color: var(--blue);
+  font-weight: 600;
+  border-radius: var(--radius);
+  display: block;
+  transform: scale(1);
+
+  outline: var(--border-thickness) solid transparent;
+  outline-offset: 4px;
+
+  transition: all 100ms ease-in;
+
+}
+.button:active {
+  transform: scale(0.95);
+  outline: none;
+}
+
+.button:focus{
+  outline: var(--border-thickness) solid var(--blue);
+  outline-offset: 4px;
+}
+
+
+.button:hover{
+  cursor: pointer;
+}
+
+
+.checkform {
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: var(--border-thickness) solid var(--border);
+  border-radius: 3px;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+
+  outline: var(--border-thickness) solid transparent;
+  outline-offset: 1px;
+  transition: outline 100ms ease-in;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  margin: 0;
+
+  transform: scale(0);
+  opacity: 0;
+  transition-property: all;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  background-color: var(--blue);
+  border-radius: 1px;
+}
+
+input[type="checkbox"]:checked::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  outline: var(--border-thickness) solid var(--blue);
+  outline-offset: 1px;
+}
+
+
+.password {
+  background-color: var(--border);
+  border-radius: var(--radius);margin: auto;
+  width: min-content;
+  display: flex;
+}
