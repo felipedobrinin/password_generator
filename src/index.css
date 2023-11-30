@@ -32,13 +32,11 @@
 
 body {
   background-color: var(--background);
-
 }
 
 .app {
   margin: auto;
   width: min(100%, 600px);
-
 }
 
 
@@ -157,10 +155,15 @@ input[type="range"] {
   display: grid;
   grid-template-columns: min-content auto;
   gap: 1rem;
-
   align-items: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .rangeform {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+}
 
 input[type="number"] {
   accent-color: var(--blue);
