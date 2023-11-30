@@ -12,6 +12,8 @@ function App() {
 
   const [password,setPassword] = useState("");
 
+
+  var special_chars =  ['!','#','$','%','*','?','@','^','&'];
   function copy_to_clipboard(){
        navigator.clipboard.writeText(password);
        alert("Copiado");
@@ -37,17 +39,13 @@ function App() {
       pool.push(...numbers_array);
     }
     if (special){
-        pool.push(...['!','#','$','%','*','?','@','^','&']);
+        pool.push(...special_chars);
     }
-    console.log({"caps":caps, "lowercase":lowercase, "numbers":numbers, "special":special})
-    console.log(pool);
     let new_password = "";
     for ( let i = 0; i < length; i++ ) {
         let char = pool[(Math.floor(Math.random() * pool.length))];
-        console.log(char);
         new_password += char ;
     }
-    console.log("after for");
     setPassword(new_password);
   }
   
@@ -62,7 +60,10 @@ function App() {
         <p className=""></p> 
 
         <div className='password text-lg'>
-          <span className='p-2'>{password}</span>
+          <span className='p-2'>
+            {/* {password} */}
+            {password.split("").map((char) => (special_chars.indexOf(char) > -1 )? <span className="text-orange-500">{char}</span> : <span>{char}</span> )}
+          </span>
           <div className='copy-button border-l-2 p-2 hover:cursor-pointer' onClick={copy_to_clipboard}>📋</div>
         </div>
 
