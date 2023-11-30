@@ -141,4 +141,32 @@ input[type="checkbox"]:focus {
   border-radius: var(--radius);margin: auto;
   width: min-content;
   display: flex;
+  max-width: 100%;
 }
+
+.password span {
+  overflow-x : auto;
+}
+/* TODO  */
+/* https://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html */
+input[type="range"] {
+  accent-color: var(--blue);
+}
+
+.rangeform {
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 1rem;
+
+  align-items: center;
+}
+
+
+input[type="number"] {
+  accent-color: var(--blue);
+  outline: var(--border-thickness) solid var(--border);
+  border-radius: 3px;
+  /* padding: 2px; */
+}
+
+
