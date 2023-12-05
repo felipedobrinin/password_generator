@@ -142,9 +142,11 @@ input[type="checkbox"]:focus {
   max-width: 100%;
 }
 
-.password span {
+.password-text {
   overflow-x : auto;
+  white-space: nowrap;
 }
+
 /* TODO  */
 /* https://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html */
 input[type="range"] {
