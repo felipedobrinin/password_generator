@@ -174,4 +174,10 @@ input[type="number"] {
   /* padding: 2px; */
 }
 
+.organge-char {
+  color: coral;
+}
 
+.blue-char {
+  color : var(--blue);
+}

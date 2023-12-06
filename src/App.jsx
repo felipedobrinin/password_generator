@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
 import Panel from './components/Panel';
 import usePassword from './hooks/usePassword';
+import Password from './components/Password';
 
 function App() {
-
+  // available special characters
+  // TODO Make it posible to choose them 
   var special_chars = ['!', '#', '$', '%', '*', '?', '@', '^', '&'];
-  // Checkboxes
+  // Checkboxes por password options
   const [caps, setCaps] = useState(true);
   const [lowercase, setLowercase] = useState(true);
   const [numbers, setNumbers] = useState(true);
   const [special, setSpecial] = useState(false);
-
+  // passowrd length
   const [length, setLenght] = useState(8);
 
   const {password, generatePassword} = usePassword(length, lowercase, caps, numbers, special, special_chars);
-  
+
   const copy_to_clipboard = () => {
     navigator.clipboard.writeText(password);
     alert(`Copied password with ${password.length} characters`);
@@ -36,10 +38,7 @@ function App() {
         <p className=""></p>
 
         <div className="password text-lg">
-          <div className="password-text p-2">
-            {/* {password} */}
-            {password.split("").map((char) => (special_chars.indexOf(char) > -1) ? <span className="text-orange-500">{char}</span> : <span>{char}</span>)}
-          </div>
+          <Password password={password} special_chars={special_chars}/>
           <div className="copy-button border-l-2 p-2 hover:cursor-pointer" onClick={copy_to_clipboard}>📋</div>
         </div>
 
