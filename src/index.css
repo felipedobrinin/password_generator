@@ -47,7 +47,7 @@ body {
   padding: var(--padding); 
   display: flex;
   flex-direction: column;
-  gap: 0.8srem;
+  gap: 1rem;
 }
 
 
@@ -183,14 +183,31 @@ input[type="number"] {
 }
 
 @media only screen and (max-width: 600px) {
+  .app {
+    height: 100vh;
+  }
 
+  .panel {
+    height: calc(100vh - var(--padding) );
+  }
+
+  .panel > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
   .checkform {
     @apply text-2xl;
   }
+
   .rangeform {
     @apply text-2xl;
 
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
+  }
+
+  form{
+    bottom: 0;
+    /* margin-bottom: 3rem; */
   }
 }
