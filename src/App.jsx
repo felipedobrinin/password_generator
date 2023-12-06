@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="app p-2">
       <Panel>
-        <h1 className="font-extrabold text-center text-6xl md:text-2xl">Password Generator</h1>
+        <h1 className="font-extrabold text-center text-6xl mb-5">Password Generator</h1>
 
         <Password password={password} special_chars={special_chars} />
 
@@ -66,7 +66,7 @@ function App() {
           <div className="rangeform">
             <div className="flex gap-4">
               <label htmlFor="range">Lenght</label>
-              <input type="number" className="w-14"
+              <input type="number" className="w-16 md:w-14"
                 min="8"
                 max="256"
                 value={length}
