@@ -15,12 +15,7 @@ function App() {
   // passowrd length
   const [length, setLenght] = useState(8);
 
-  const {password, generatePassword} = usePassword(length, lowercase, caps, numbers, special, special_chars);
-
-  const copy_to_clipboard = () => {
-    navigator.clipboard.writeText(password);
-    alert(`Copied password with ${password.length} characters`);
-  }
+  const { password, generatePassword } = usePassword(length, lowercase, caps, numbers, special, special_chars);
 
   function handleGenerate(e) {
     e.preventDefault();
@@ -34,13 +29,9 @@ function App() {
   return (
     <div className="app p-2">
       <Panel>
-        <h1 className="font-extrabold text-center text-2xl">Password Generator</h1>
-        <p className=""></p>
+        <h1 className="font-extrabold text-center text-6xl md:text-2xl">Password Generator</h1>
 
-        <div className="password text-lg">
-          <Password password={password} special_chars={special_chars}/>
-          <div className="copy-button border-l-2 p-2 hover:cursor-pointer" onClick={copy_to_clipboard}>📋</div>
-        </div>
+        <Password password={password} special_chars={special_chars} />
 
         <form action="" className="py-2" onSubmit={handleGenerate} >
           <div className="checkform">
@@ -101,7 +92,7 @@ function App() {
             </datalist>
           </div>
 
-          <input type="submit" value="Re Generate" className="mt-4 mx-auto text-2xl button p-2 px-10"/>
+          <input type="submit" value="Re Generate" className="mt-4 mx-auto text-2xl button p-2 px-10" />
         </form>
       </Panel>
     </div>
