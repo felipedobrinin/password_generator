@@ -37,6 +37,7 @@ body {
 .app {
   margin: auto;
   width: min(100%, 750px);
+  padding: var(--padding);
 }
 
 
@@ -188,7 +189,7 @@ input[type="number"] {
   }
 
   .panel {
-    height: calc(100vh - var(--padding) );
+    height: calc(100vh - var(--padding));
   }
 
   .panel > * {
@@ -206,8 +207,4 @@ input[type="number"] {
     grid-template-rows: auto auto;
   }
 
-  form{
-    bottom: 0;
-    /* margin-bottom: 3rem; */
-  }
 }

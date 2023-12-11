@@ -27,12 +27,10 @@ function App() {
   }, []);
 
   return (
-    <div className="app p-2">
+    <div className="app">
       <Panel>
         <h1 className="font-extrabold text-center text-6xl mb-5">Password Generator</h1>
-
         <Password password={password} special_chars={special_chars} />
-
         <form action="" className="py-2" onSubmit={handleGenerate} >
           <div className="checkform">
             <input type="checkbox" name="" id="caps" className="checkbox"
