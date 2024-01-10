@@ -11,9 +11,9 @@ function App() {
   const [caps, setCaps] = useState(true);
   const [lowercase, setLowercase] = useState(true);
   const [numbers, setNumbers] = useState(true);
-  const [special, setSpecial] = useState(false);
+  const [special, setSpecial] = useState(true);
   // passowrd length
-  const [length, setLenght] = useState(8);
+  const [length, setLenght] = useState(16);
 
   const { password, generatePassword } = usePassword(length, lowercase, caps, numbers, special, special_chars);
 
