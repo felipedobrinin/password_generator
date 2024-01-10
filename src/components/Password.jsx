@@ -17,7 +17,7 @@ function Password({ password, special_chars }) {
     }
     return (
         <div className="password">
-            <div className="password-text p-2 text-4xl md:text-3xl font-medium">
+            <div className="font-mono font-semibold password-text p-2 text-5xl ">
                 {password.split("").map((char) => renderChar(char))}
             </div>
             <div className="copy-button border-l-2 p-2 hover:cursor-pointer text-4xl md:text-2xl" onClick={copy_to_clipboard}>📋</div>
