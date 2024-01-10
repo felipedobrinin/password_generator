@@ -31,24 +31,29 @@ function usePassword(length, lowercase, caps, numbers, special, special_chars) {
             return;
         }
 
+        if ((lowercase && caps) == false) {
+            alert("You need at least one type of letter (a-z or A-Z) available");
+            return;
+        }
+
         if (lowercase) pool.push(...Array.from({ length: 26 }, (_, i) => String.fromCharCode('a'.charCodeAt(0) + i)));
         if (caps) pool.push(...Array.from({ length: 26 }, (_, i) => String.fromCharCode('A'.charCodeAt(0) + i)));
 
-        for (let i = 0; i < full_length; i++) {
-            let char = pool[(Math.floor(Math.random() * pool.length))];
-            new_password += char;
-        }
         //adding special characters in different loop, we are making sure that we get a decent ammount of special characters here
         for (let i = 0; i < special_count; i++) {
             let char = special_chars[(Math.floor(Math.random() * special_chars.length))];
             new_password += char;
         }
-
+        
         for (let i = 0; i < numbers_count; i++) {
             let char = Math.floor(Math.random() * 10);
             new_password += char;
         }
-
+        
+        for (let i = 0; i < full_length; i++) {
+            let char = pool[(Math.floor(Math.random() * pool.length))];
+            new_password += char;
+        }
         setPassword(shuffle(new_password));
     }
 
