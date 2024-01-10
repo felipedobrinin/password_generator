@@ -125,7 +125,7 @@ input[type="checkbox"]::before {
   transition-timing-function: ease-out;
   box-shadow: inset 1em 1em var(--form-control-color);
   background-color: var(--blue);
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 input[type="checkbox"]:checked::before {
