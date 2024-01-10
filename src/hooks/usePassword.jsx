@@ -31,7 +31,7 @@ function usePassword(length, lowercase, caps, numbers, special, special_chars) {
             return;
         }
 
-        if ((lowercase && caps) == false) {
+        if (!lowercase && !caps) {
             alert("You need at least one type of letter (a-z or A-Z) available");
             return;
         }
