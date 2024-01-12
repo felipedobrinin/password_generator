@@ -1,59 +1,29 @@
 import { useState } from 'react';
 
-function usePassword(length, lowercase, caps, numbers, special, special_chars) {
+function usePassword(special_chars) {
 
     const [password, setPassword] = useState("");
 
     // Generates a random password with the specified parameters
-    const generatePassword = () => {
-        let pool = [];
-        let full_length = length;
-        let special_count = 0;
-        let numbers_count = 0;
-        let new_password = "";
+    const generatePassword = (lengths) => {
+        let new_password = '';
 
-        // here we are generating a number of special characters to use
-        // making sure that we get at least 1/4 of the total characters made of special characters
-        if (special) {
-            let factor = Math.floor(Math.random() * 3) + 2;
-            special_count = Math.floor(full_length / factor);
-            full_length -= special_count;
-        }
+        let lowercase = sample_string(
+            Array.from({ length: 26 }, (_, i) => String.fromCharCode('a'.charCodeAt(0) + i)),
+            lengths.lowercase_len
+        );
 
-        if (numbers) {
-            let factor = Math.floor(Math.random() * 3) + 2;
-            numbers_count = Math.floor(full_length / factor);
-            full_length -= numbers_count;
-        }
+        let uppercase = sample_string(
+            Array.from({ length: 26 }, (_, i) => String.fromCharCode('A'.charCodeAt(0) + i)),
+            lengths.uppercase_len
+        );
 
-        if ((lowercase || caps || numbers) == false) {
-            alert("You need at least one option (apart from special characters) enabled");
-            return;
-        }
+        let numbers = random_numbers(lengths.numbers_len);
 
-        if (!lowercase && !caps) {
-            alert("You need at least one type of letter (a-z or A-Z) available");
-            return;
-        }
+        let special = sample_string(special_chars, lengths.special_chars_len);
 
-        if (lowercase) pool.push(...Array.from({ length: 26 }, (_, i) => String.fromCharCode('a'.charCodeAt(0) + i)));
-        if (caps) pool.push(...Array.from({ length: 26 }, (_, i) => String.fromCharCode('A'.charCodeAt(0) + i)));
 
-        //adding special characters in different loop, we are making sure that we get a decent ammount of special characters here
-        for (let i = 0; i < special_count; i++) {
-            let char = special_chars[(Math.floor(Math.random() * special_chars.length))];
-            new_password += char;
-        }
-        
-        for (let i = 0; i < numbers_count; i++) {
-            let char = Math.floor(Math.random() * 10);
-            new_password += char;
-        }
-        
-        for (let i = 0; i < full_length; i++) {
-            let char = pool[(Math.floor(Math.random() * pool.length))];
-            new_password += char;
-        }
+        new_password = lowercase + uppercase + numbers + special;
         setPassword(shuffle(new_password));
     }
 
@@ -80,4 +50,19 @@ function usePassword(length, lowercase, caps, numbers, special, special_chars) {
     return { password, generatePassword }
 }
 
+function sample_string(array, ammount){
+    let string = '';
+    for (let i = 0; i < ammount; i++) {
+        string += array[(Math.floor(Math.random() * array.length))];
+    }
+    return string;
+}
+
+function random_numbers(len){
+    let string = ''
+    for (let i = 0; i < len; i++) {
+        string += Math.floor(Math.random() * 10);
+    }
+    return string;
+}
 export default usePassword
