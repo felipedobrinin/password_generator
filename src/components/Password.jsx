@@ -5,7 +5,7 @@ function Password({ password, special_chars }) {
         alert(`Copied password with ${password.length} characters`);
     }
 
-    const renderChar = (char) => {
+    const renderChar = (char, index) => {
         let class_name = "";
         if (special_chars.indexOf(char) > -1) {
             class_name = "organge-char";
@@ -13,12 +13,12 @@ function Password({ password, special_chars }) {
             class_name = "blue-char";
         }
 
-        return <span className={class_name}>{char}</span>;
+        return <span className={class_name} key={index}>{char}</span>;
     }
     return (
         <div className="password  text-5xl">
             <div className="font-mono font-semibold password-text p-2 ">
-                {password.split("").map((char) => renderChar(char))}
+                {password.split("").map((char, index) => renderChar(char, index))}
             </div>
             <div className="copy-button border-l-2 p-2 hover:cursor-pointer" onClick={copy_to_clipboard}>📋</div>
         </div>
