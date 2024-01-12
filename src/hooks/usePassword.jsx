@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 function usePassword(special_chars) {
-
     const [password, setPassword] = useState("");
 
     // Generates a random password with the specified parameters
@@ -65,4 +64,5 @@ function random_numbers(len){
     }
     return string;
 }
+
 export default usePassword
