@@ -60,12 +60,18 @@ body {
   display: block;
   transform: scale(1);
 
-  outline: var(--border-thickness) solid transparent;
+  outline: 4px solid transparent;
   outline-offset: 4px;
 
   transition: all 100ms ease-in;
 
 }
+
+.button:hover{
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
 .button:active {
   transform: scale(0.95);
   outline: none;
@@ -77,9 +83,25 @@ body {
 }
 
 
-.button:hover{
-  cursor: pointer;
+.copy-button {
+  border-radius: 0 var(--radius) var(--radius) 0;
+
+  outline: var(--border-thickness) solid transparent;
+  outline-offset: 2px;
+
+  transform: scale(1);
+  transition: all 100ms ease-in;
 }
+.copy-button:hover { 
+  transform: scale(1.05);
+}
+
+.copy-button:active {
+  outline: var(--border-thickness) solid var(--blue);
+  transform: scale(0.95);
+}
+
+
 
 
 .checkform {
