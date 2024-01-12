@@ -60,7 +60,7 @@ body {
   display: block;
   transform: scale(1);
 
-  outline: 4px solid transparent;
+  outline: 6px solid transparent;
   outline-offset: 4px;
 
   transition: all 100ms ease-in;
@@ -69,7 +69,7 @@ body {
 
 .button:hover{
   cursor: pointer;
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .button:active {
@@ -79,7 +79,6 @@ body {
 
 .button:focus{
   outline: var(--border-thickness) solid var(--blue);
-  outline-offset: 4px;
 }
 
 
@@ -100,9 +99,6 @@ body {
   outline: var(--border-thickness) solid var(--blue);
   transform: scale(0.95);
 }
-
-
-
 
 .checkform {
   @apply text-xl;
@@ -163,7 +159,8 @@ input[type="checkbox"]:focus {
 
 .password {
   background-color: var(--border);
-  border-radius: var(--radius);margin: auto;
+  border-radius: var(--radius);
+  margin: auto;
   width: min-content;
   display: flex;
   max-width: 100%;
@@ -188,8 +185,6 @@ input[type="range"] {
   align-items: center;
 }
 
-
-
 input[type="number"] {
   accent-color: var(--blue);
   outline: var(--border-thickness) solid var(--border);
@@ -203,6 +198,11 @@ input[type="number"] {
 
 .blue-char {
   color : var(--blue);
+}
+
+.toast {
+  @apply text-4xl md:text-3xl;
+  border: var(--border-thickness) solid rgba(207, 207, 207, 0.673)
 }
 
 @media only screen and (max-width: 600px) {

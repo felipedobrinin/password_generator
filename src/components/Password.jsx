@@ -1,8 +1,13 @@
+import toast, { Toaster } from 'react-hot-toast';
+
 function Password({ password, special_chars }) {
 
     const copy_to_clipboard = () => {
         navigator.clipboard.writeText(password);
-        // alert(`Copied password with ${password.length} characters`);
+        toast('password copied!', {
+            className: 'toast',
+            icon: '📋',
+        });
     }
 
     const renderChar = (char, index) => {
@@ -16,11 +21,16 @@ function Password({ password, special_chars }) {
         return <span className={class_name} key={index}>{char}</span>;
     }
     return (
-        <div className="password text-3xl md:text-5xl">
+        <div className="password text-4xl md:text-5xl">
             <div className="font-mono font-semibold password-text p-2 border-r-2 ">
                 {password.split("").map((char, index) => renderChar(char, index))}
             </div>
             <div className="copy-button select-none p-2 hover:cursor-pointer" onClick={copy_to_clipboard}>📋</div>
+            <Toaster
+                toastOptions={{
+                duration: 2000,
+                }}
+            />
         </div>
     )
 }
