@@ -4,20 +4,16 @@ import usePassword from './hooks/usePassword';
 import Password from './components/Password';
 
 function App() {
-  // available special characters
-  // TODO Make it posible to choose them 
+  console.log("Rendered")
+  // available special characters. TODO Make it posible to choose them 
   var special_chars = ['!', '#', '$', '%', '*', '?', '@', '^', '&'];
   // Checkboxes por password options
   const [params,setParams] = useState({
     length : 16,
     has_lowercase : true,
-    lowercase_len : 4,
     has_uppercase : true,
-    uppercase_len : 4,
     has_numbers : true,
-    numbers_len : 4,
     has_special_chars : true,
-    special_chars_len : 4
   });
 
   const { password, generatePassword } = usePassword(params, special_chars);
@@ -25,27 +21,23 @@ function App() {
   function handleGenerate(e) {
     e.preventDefault();
 
-    if ((params.has_lowercase || params.has_uppercase || params.has_numbers) == false) {
-        alert("You need at least one option (apart from special characters) enabled");
+    if (!params.has_lowercase && !params.has_uppercase && !params.has_numbers && !params.has_special_chars) {
+        alert("You need at least one option enabled");
         return;
     }
 
-    if (!params.has_lowercase && !params.has_uppercase) {
-        alert("You need at least one type of letter (a-z or A-Z) available");
-        return;
-    }
-
-    setParams({
-      ...params,
-      ...lengths()
-    })
-    generatePassword();
+    // if (!params.has_lowercase && !params.has_uppercase) {
+    //     alert("You need at least one type of letter (a-z or A-Z) available");
+    //     return;
+    // }
+    generatePassword(lengths());
   }
 
   function lengths() {
     let left = params.length;
-    let factor = [params.has_lowercase, params.has_uppercase, params.has_numbers, params.has_special_chars].filter(Boolean).length;
 
+    let factor = [params.has_lowercase, params.has_uppercase, params.has_numbers, params.has_special_chars].filter(Boolean).length;
+    let share = Math.ceil(params.length / factor); 
     let lowercase_len = 0;
     let uppercase_len = 0;
     let numbers_len = 0;
@@ -53,39 +45,33 @@ function App() {
 
 
     if (params.has_lowercase) { 
-      lowercase_len = Math.floor(left / factor); 
+      lowercase_len = Math.min(share,left);
       left -= lowercase_len;
-      console.log(left);
     }
     if (params.has_uppercase) { 
-      uppercase_len = Math.floor(left / factor); 
+      uppercase_len = Math.min(share,left);
       left -= uppercase_len;
-      console.log(left);
     }
     if (params.has_numbers) { 
-      numbers_len = Math.floor(left / factor); 
+      numbers_len = Math.min(share,left);
       left -= numbers_len;
-      console.log(left);
     }
     if (params.has_special_chars) { 
-      special_chars_len = Math.floor(left / factor); 
+      special_chars_len = Math.min(share,left);
       left -= special_chars_len;
-      console.log(left);
     }
-    let lengths = {
+
+    return {
       lowercase_len,
       uppercase_len,
       numbers_len,
       special_chars_len
     }
-
-    console.log(lengths)
-    return lengths
   }
 
 
   useEffect(() => {
-    generatePassword();
+    generatePassword(lengths());
   }, []);
 
   return (
