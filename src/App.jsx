@@ -152,7 +152,7 @@ function App() {
             </datalist>
           </div>
 
-          <input type="submit" value="Re Generate" className="mt-4 mx-auto text-3xl md:text-2xl button p-2 px-10" />
+          <input type="submit" value="Re Generate" className="mt-10 mx-auto text-5xl md:text-4xl md:mt-4 button py-2 px-10" />
         </form>
       </Panel>
     </div>
