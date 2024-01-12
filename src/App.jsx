@@ -25,11 +25,7 @@ function App() {
         alert("You need at least one option enabled");
         return;
     }
-
-    // if (!params.has_lowercase && !params.has_uppercase) {
-    //     alert("You need at least one type of letter (a-z or A-Z) available");
-    //     return;
-    // }
+    
     generatePassword(lengths());
   }
 
