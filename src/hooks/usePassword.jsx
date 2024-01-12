@@ -5,22 +5,22 @@ function usePassword(params, special_chars) {
     const [password, setPassword] = useState("");
 
     // Generates a random password with the specified parameters
-    const generatePassword = () => {
+    const generatePassword = (lengths) => {
         let new_password = '';
 
         let lowercase = sample_string(
             Array.from({ length: 26 }, (_, i) => String.fromCharCode('a'.charCodeAt(0) + i)),
-            params.lowercase_len
+            lengths.lowercase_len
         );
 
         let uppercase = sample_string(
             Array.from({ length: 26 }, (_, i) => String.fromCharCode('A'.charCodeAt(0) + i)),
-            params.uppercase_len
+            lengths.uppercase_len
         );
 
-        let numbers = random_numbers(params.numbers_len);
+        let numbers = random_numbers(lengths.numbers_len);
 
-        let special = sample_string(special_chars, params.special_chars_len);
+        let special = sample_string(special_chars, lengths.special_chars_len);
 
 
         new_password = lowercase + uppercase + numbers + special;
