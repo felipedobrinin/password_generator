@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function usePassword(params, special_chars) {
+function usePassword(special_chars) {
 
     const [password, setPassword] = useState("");
 

@@ -16,7 +16,7 @@ function App() {
     has_special_chars : true,
   });
 
-  const { password, generatePassword } = usePassword(params, special_chars);
+  const { password, generatePassword } = usePassword(special_chars);
 
   function handleGenerate(e) {
     e.preventDefault();
